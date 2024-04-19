@@ -5,9 +5,12 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" href="/favicon.png" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pet Planet - магазин товаров для животных</title>
+
+  <link href="../public/fonts/onest-v6-cyrillic_latin-regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin>
+  <link href="../public/fonts/onest-v6-cyrillic_latin-700.woff2" rel="preload" type="font/woff2" as="font" crossorigin>
+  <link href="./scss/index.scss" rel="stylesheet">
 </head>
 
 <body>
@@ -18,12 +21,14 @@
   </header>
 
   <main class="main">
-    <h1 class="main__title">Pet Planet&nbsp;&mdash; магазин товаров для животных</h1>
+    <h1 class="main__title visually-hidden">Pet Planet&nbsp;&mdash; магазин товаров для животных</h1>
 
     <section class="hero">
       <div class="container hero__container">
-        <h2 class="hero__title">Товары для твоих любимцев</h2>
-        <img src="./img/tittle.svg" alt="Товары для твоих любимцев">
+        <h2 class="visually-hidden">Товары для твоих любимцев</h2>
+
+        <img class="hero__title" src="./img/tittle.svg" alt="Товары для твоих любимцев">
+
         <p class="hero__text">
           Большой выбор домиков, лежанок и&nbsp;кормов для кошек и&nbsp;собак
         </p>
@@ -36,6 +41,7 @@
         <div class="about__box">
           <div class="about__content">
             <p class="about__text">Мы&nbsp;&mdash; команда любящих и&nbsp;заботливых владельцев животных, которые с&nbsp;особым вниманием относятся к&nbsp;потребностям и&nbsp;радостям наших пушистых друзей.</p>
+
             <p class="about__text">Стремясь к&nbsp;тому, чтобы ваш питомец был здоровым, счастливым и&nbsp;полным энергии, мы&nbsp;предлагаем только лучшие товары и&nbsp;услуги, проверенные временем и&nbsp;рекомендованные ветеринарами.</p>
           </div>
         </div>
@@ -43,31 +49,42 @@
     </section>
 
     <section class="advantages">
-      <div class="container advantages__container">
-        <h2 class="advantages__title">Наши преимущества</h2>
-        <ul class="advantages__list">
-          <li class="advantages__item item">
-            <h3 class="item__title">Широкий ассортимент</h3>
-            <p class="item__text">У&nbsp;нас есть все для того, чтобы сделать жизнь вашего любимца комфортной и&nbsp;уютной.</p>
-          </li>
-          <li class="advantages__item item">
-            <h3 class="item__title">Качество и&nbsp;безопасность</h3>
-            <p class="item__text">Мы&nbsp;тщательно отбираем товары для наших клиентов, уделяя особое внимание качеству и&nbsp;безопасности.</p>
-          </li>
-          <li class="advantages__item item">
-            <h3 class="item__title">Персональный подход</h3>
-            <p class="item__text">Мы&nbsp;понимаем, что каждый питомец уникален, поэтому предлагаем вам индивидуальные рекомендации по&nbsp;выбору товаров.</p>
-          </li>
-        </ul>
+      <div class="advantages__bg">
+        <div class="advantages__count-box">
+          <p class="advantages__count">10</p>
+          <p class="advantages__count-text">магазинов в&nbsp;сети</p>
+        </div>
+
+        <div class="container advantages__container">
+          <h2 class="advantages__title">Наши преимущества</h2>
+
+          <ul class="advantages__list">
+            <li class="advantages__item advantages__item_assortment">
+              <h3 class="advantages__subtitle">Широкий ассортимент</h3>
+              <p class="advantages__text">У&nbsp;нас есть все для того, чтобы сделать жизнь вашего любимца комфортной и&nbsp;уютной.</p>
+            </li>
+
+            <li class="advantages__item advantages__item_quality">
+              <h3 class="advantages__subtitle">Качество и&nbsp;безопасность</h3>
+              <p class="advantages__text">Мы&nbsp;тщательно отбираем товары для наших клиентов, уделяя особое внимание качеству и&nbsp;безопасности.</p>
+            </li>
+
+            <li class="advantages__item advantages__item_personal">
+              <h3 class="advantages__subtitle">Персональный подход</h3>
+              <p class="advantages__text">Мы&nbsp;понимаем, что каждый питомец уникален, поэтому предлагаем вам индивидуальные рекомендации по&nbsp;выбору товаров.</p>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <section class="subscribe">
       <div class="container subscribe__container">
-        <h2 class="subscribe__title">Подпишись на&nbsp;рассылку и&nbsp;узнавай о&nbsp;новинках первым!</h2>
         <form class="subscribe__form" action="#" method="post">
+          <h2 class="subscribe__title">Подпишись на&nbsp;рассылку и&nbsp;узнавай о&nbsp;новинках первым!</h2>
           <fieldset class="subscribe__field">
             <input class="subscribe__input" type="email" name="email" placeholder="E-mail">
+
             <button class="subscribe__button" type="submit">Отправить</button>
           </fieldset>
         </form>
@@ -77,14 +94,18 @@
 
   <footer class="footer">
     <div class="container footer__container">
-      <img src="./img/logo.svg" alt="Товары для твоих любимцев">
+      <img class="footer__logo" src="./img/logo.svg" alt="Товары для твоих любимцев">
+
       <div class="footer__info">
         <p class="footer__copyright">&copy;Petshop, 2024</p>
+
         <p class="footer__text">Проект сделан в&nbsp;учебных целях</p>
-        <ul class="footer__list">
+
+        <ul class="footer__list-devs">
           <li class="footer__item">
             <a class="footer__link" href="https://t.me/Mrshmallowww" target="_blank">Designer: Anastasia Ilina</a>
           </li>
+
           <li class="footer__item">
             <a class="footer__link" href="#" target="_blank">Developer: Kos Ann</a>
           </li>
@@ -102,6 +123,7 @@
               </svg>
             </a>
           </li>
+
           <li class="footer__item">
             <a class="footer__link" href="#" aria-label="канал на Ютубе">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -109,6 +131,7 @@
               </svg>
             </a>
           </li>
+
           <li class="footer__item">
             <a class="footer__link" href="#" aria-label="страница в контакте">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

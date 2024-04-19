@@ -1,0 +1,15 @@
+@use "fonts" as *;
+
+:root {
+  --font-size: 24px;
+}
+
+$font-family: "Onest", sans-serif;
+$font-size: var(--font-size);
+$font-weight: 400;
+$line-height: 1.4;
+
+$light: #fdeee3;
+$purple: #a346cf;
+$carrot: #e47537;
+$green: #008234;

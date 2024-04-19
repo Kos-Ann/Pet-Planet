@@ -1,0 +1,64 @@
+@use "../variables/" as *;
+
+.footer {
+  padding-top: 80px;
+  padding-bottom: 32px;
+  color: $light;
+  background-color: $green;
+  background-image: url("/img/pow.png");
+  background-repeat: no-repeat;
+  background-position: 41vw 50px;
+
+  &__container {
+    display: grid;
+    grid-template-areas:
+      "logo contacts"
+      "info contacts";
+  }
+
+  &__logo {
+    grid-area: logo;
+    width: 331px;
+    margin-bottom: 50px;
+  }
+
+  &__info {
+    grid-area: info;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.4;
+    color: $light;
+  }
+
+  &__copyright {
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    margin-bottom: 3px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__item {
+    margin-bottom: 3px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__contacts {
+    grid-area: contacts;
+    justify-self: end;
+    font-style: normal;
+  }
+
+  &__email {
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+}

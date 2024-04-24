@@ -3,20 +3,58 @@
 
 .hero {
   color: $light;
-  padding-top: 218px;
-  padding-bottom: 245px;
+  padding: 218px 0 245px;
   background-color: $purple;
   background-image: url("/img/bg-dog.png"), url("/img/pattern.svg");
-  background-size: contain, cover;
-  background-position: right, center;
-  background-repeat: no-repeat;
+  background-size: contain, 100%;
+  background-position: right bottom, top;
+  background-repeat: no-repeat, repeat;
+
+  @include laptop {
+    padding: 148px 0 172px;
+      background-image: url("/img/bg-dog-laptop.png"), url("/img/pattern.svg");
+
+  }
+
+  @include tablet {
+    padding: 108px 0 461px;
+    background-size: 655px 564px, cover;
+      background-image: url("/img/bg-dog-tablet.png"), url("/img/pattern.svg");
+
+  }
+
+  @include mobile {
+    padding: 101px 0 283px;
+    background-size: 294px 256px, cover;
+      background-image: url("/img/bg-dog-mobile.png"), url("/img/pattern.svg");
+
+  }
 
   &__title {
-    max-width: 810px;
+    max-width: 100%;
+    width: 810px;
     margin-bottom: 50px;
+
+    @media (max-width: 1340px) {
+      width: 640px;
+    }
+
+    @include laptop {
+      width: 588px;
+      margin-bottom: 32px;
+    }
+
+    @include mobile {
+      width: 292px;
+      margin-bottom: 16px;
+    }
   }
 
   &__text {
     max-width: 420px;
+
+    @include laptop {
+      max-width: 334px;
+    }
   }
 }

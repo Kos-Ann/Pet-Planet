@@ -1,25 +1,59 @@
-@use "../variables/" as *;
+@use "../variables" as *;
+@use "../media" as *;
 
 .footer {
-  padding-top: 80px;
-  padding-bottom: 32px;
+  padding: 80px 0 32px;
   color: $light;
   background-color: $green;
-  background-image: url("/img/pow.png");
+  background-image: url("/img/paw.png");
   background-repeat: no-repeat;
-  background-position: 41vw 50px;
+  background-position: left 41vw bottom -75px;
+  background-size: 375px;
+
+  @include laptop {
+    padding-top: 50px;
+    background-size: 311px;
+  }
+
+  @include tablet {
+    padding-top: 40px;
+    background-size: 215px;
+    background-position: right 46px bottom -45px;
+  }
+
+  @include mobile {
+    padding: 30px 0 24px;
+    background-size: 144px;
+    background-position: right -30px bottom -30px;
+  }
 
   &__container {
     display: grid;
+    gap: 50px;
     grid-template-areas:
       "logo contacts"
       "info contacts";
+
+    @include tablet {
+      gap: 82px 1px;
+    }
+
+    @include mobile {
+      gap: 32px;
+      grid-template-areas:
+        "logo"
+        "contacts"
+        "info";
+    }
   }
 
   &__logo {
     grid-area: logo;
     width: 331px;
-    margin-bottom: 50px;
+
+    @include tablet {
+      width: 200px;
+    }
   }
 
   &__info {
@@ -28,6 +62,10 @@
     font-size: 16px;
     line-height: 1.4;
     color: $light;
+
+    @include mobile {
+      font-size: 12px;
+    }
   }
 
   &__copyright {
@@ -55,10 +93,19 @@
     grid-area: contacts;
     justify-self: end;
     font-style: normal;
+
+    @include mobile {
+      justify-self: start;
+      margin-bottom: 67px;
+    }
   }
 
   &__email {
     display: inline-block;
     margin-bottom: 16px;
+
+    @include laptop {
+      font-size: 20px;
+    }
   }
 }

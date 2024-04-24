@@ -1,3 +1,5 @@
+@use "../media" as *;
+
 .header {
   position: absolute;
   top: 0;
@@ -6,7 +8,20 @@
   z-index: 10;
 
   &__logo {
-    width: 331px;
+    max-width: 331px;
     padding-top: 50px;
+
+    @include laptop {
+      padding-top: 40px;
+    }
+
+    @include tablet {
+      width: 200px;
+      padding-top: 32px;
+    }
+
+    @include mobile {
+      padding-top: 22px;
+    }
   }
 }

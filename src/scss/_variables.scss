@@ -1,7 +1,22 @@
 @use "fonts" as *;
+@use "media" as *;
 
 :root {
+  --title-size: 52px;
+  --subtitle-size: 28px;
   --font-size: 24px;
+
+  @include laptop {
+    --title-size: 44px;
+    --subtitle-size: 24px;
+    --font-size: 20px;
+  }
+
+  @include mobile {
+    --title-size: 30px;
+    --subtitle-size: 20px;
+    --font-size: 16px;
+  }
 }
 
 $font-family: "Onest", sans-serif;

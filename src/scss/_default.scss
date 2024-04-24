@@ -84,25 +84,16 @@ iframe {
   max-width: 1440px;
   padding: 0 70px;
   margin: 0 auto;
-}
 
-@media (max-width: 1024px) {
-  .container {
-    max-width: 920px;
+  @include laptop {
     padding: 0 52px;
   }
-}
 
-@media (max-width: 768px) {
-  .container {
-    max-width: 676px;
+  @include tablet {
     padding: 0 46px;
   }
-}
 
-@media (max-width: 320px) {
-  .container {
-    max-width: 292px;
+  @include mobile {
     padding: 0 14px;
   }
 }

@@ -6,28 +6,31 @@
   padding: 218px 0 245px;
   background-color: $purple;
   background-image: url("/img/bg-dog.png"), url("/img/pattern.svg");
-  background-size: contain, 100%;
-  background-position: right bottom, top;
+  background-size: contain;
+  background-position: right bottom, top left;
   background-repeat: no-repeat, repeat;
+
+  @include bigscreen {
+    background-image: url("/img/bg-dog-bs.png"), url("/img/pattern.svg");
+    background-position: left 47vw bottom, top left;
+    background-size: 1850px;
+  }
 
   @include laptop {
     padding: 148px 0 172px;
-      background-image: url("/img/bg-dog-laptop.png"), url("/img/pattern.svg");
-
+    background-image: url("/img/bg-dog-laptop.png"), url("/img/pattern.svg");
   }
 
   @include tablet {
     padding: 108px 0 461px;
     background-size: 655px 564px, cover;
-      background-image: url("/img/bg-dog-tablet.png"), url("/img/pattern.svg");
-
+    background-image: url("/img/bg-dog-tablet.png"), url("/img/pattern.svg");
   }
 
   @include mobile {
     padding: 101px 0 283px;
     background-size: 294px 256px, cover;
-      background-image: url("/img/bg-dog-mobile.png"), url("/img/pattern.svg");
-
+    background-image: url("/img/bg-dog-mobile.png"), url("/img/pattern.svg");
   }
 
   &__title {

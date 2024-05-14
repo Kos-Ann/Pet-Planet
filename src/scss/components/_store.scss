@@ -47,7 +47,6 @@
       background-color: $green;
       transition: transform 0.3s ease-in-out;
       transform: scaleX(0);
-
     }
 
     &_active::after {

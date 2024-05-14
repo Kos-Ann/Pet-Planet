@@ -1,0 +1,37 @@
+@use "../variables" as *;
+@use "../media" as *;
+
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px 16px;
+  background-color: $white;
+  border-radius: 24px;
+
+  &__image {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 4px;
+  }
+
+  &__price {
+    margin-bottom: 24px;
+  }
+
+  &__btn-add-cart {
+    border-radius: 40px;
+    padding: 16px 24px;
+    width: 388px;
+    height: 66px;
+    font-weight: 700;
+    text-align: center;
+    background: $purple;
+    color: $light;
+  }
+}

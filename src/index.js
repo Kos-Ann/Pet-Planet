@@ -1,7 +1,13 @@
+import { renderProducts } from "./js/renderProducts.js";
+
+export const API_URL = "https://almond-flat-rainstorm.glitch.me";
+// /api/products/category
+
+
 const buttons = document.querySelectorAll('.store__category-button');
 
-const changeActiveBtn = (event) => {
-  const t = event.target;
+const changeActiveBtn = (e) => {
+  const t = e.target;
   buttons.forEach((button) => {
     button.classList.remove('store__category-button_active');
   });
@@ -9,28 +15,29 @@ const changeActiveBtn = (event) => {
   t.classList.add('store__category-button_active');
 };
 
+
 buttons.forEach((button) => {
   button.addEventListener('click', changeActiveBtn);
 });
-// ------------------------------------------------------------------------------------
-const API_URL = 'cream-thorn-chickadee.glitch.me';
-// /api/products/category
 
-const productsList = document.querySelector('.store__list');
 
 const fetchProductsByCategory = async (category) => {
+
   try {
-    const response = await fetch(`${API_URL}/api/products/category/${category}`);
-    console.log('response: ', response);
+    const response = await fetch(
+      `${API_URL}/api/products/category/${category}`
+    );
 
     if (!response.ok) {
-      throw new Error(`Something went wrong, ${response.status}`);
+      throw new Error(`Страница не найдена, ${response.status}`);
     }
 
-    console.log();
+    const products = await response.json();
+
+    renderProducts(products);
 
   } catch (error) {
-    console.log(`Ошибка запроса товаров: ${error.message}`);
+    console.error(`Ошибка запроса товаров: ${error}`);
   }
 }
-fetchProductsByCategory('Корма')
+fetchProductsByCategory('Игрушки');

@@ -1,43 +1,44 @@
-import { renderProducts } from "./js/renderProducts.js";
+import { changeCategory } from "./js/changeCategory.js";
+import { addToCart } from "./js/addToCart.js";
+import { fetchProductsByCategory } from "./js/fetchProductsByCategory.js";
+import { updateCartCount } from "./js/udateCartCount.js";
+import { renderCartItems } from "./js/renderCartItems.js";
 
 export const API_URL = "https://almond-flat-rainstorm.glitch.me";
 // /api/products/category
+export const productList = document.querySelector(".store__list");
+export const buttons = document.querySelectorAll('.store__category-button');
+export const cartBtn = document.querySelector('.store__cart-button');
+export const cartCount = cartBtn.querySelector(".store__cart-cnt");
+export const modalOverlay = document.querySelector('.modal-overlay');
+export const cartItemsList = document.querySelector('.modal__cart-items');
 
-
-const buttons = document.querySelectorAll('.store__category-button');
-
-const changeActiveBtn = (e) => {
-  const t = e.target;
-  buttons.forEach((button) => {
-    button.classList.remove('store__category-button_active');
-  });
-
-  t.classList.add('store__category-button_active');
-};
-
+updateCartCount();
 
 buttons.forEach((button) => {
-  button.addEventListener('click', changeActiveBtn);
+  button.addEventListener('click', changeCategory);
+
+  if (button.classList.contains('store__category-button_active')) {
+    fetchProductsByCategory(button.textContent);
+  }
 });
 
+cartBtn.addEventListener('click', () => {
+  modalOverlay.style.display = "flex";
+  renderCartItems();
+})
 
-const fetchProductsByCategory = async (category) => {
-
-  try {
-    const response = await fetch(
-      `${API_URL}/api/products/category/${category}`
-    );
-
-    if (!response.ok) {
-      throw new Error(`Страница не найдена, ${response.status}`);
-    }
-
-    const products = await response.json();
-
-    renderProducts(products);
-
-  } catch (error) {
-    console.error(`Ошибка запроса товаров: ${error}`);
+modalOverlay.addEventListener('click', ({ target }) => {
+  if (target === modalOverlay || target.closest('.modal-overlay_close-btn')) {
+    modalOverlay.style.display = "none";
   }
-}
-fetchProductsByCategory('Игрушки');
+})
+
+productList.addEventListener("click", ({ target }) => {
+  if (target.closest('.product__btn-add-cart')) {
+    const productCard = target.closest('.store__product');
+    const productName = productCard.querySelector('.product__title').textContent;
+
+    addToCart(productName);
+  }
+})

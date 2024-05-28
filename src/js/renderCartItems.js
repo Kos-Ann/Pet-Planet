@@ -1,13 +1,31 @@
-import { cartItemsList } from "../index.js"
+import { API_URL, cartItemsList } from "../index.js"
 
-export const renderCartItems = () => {
-  // cartItemsList.textContent = "";
+export const renderCartItems = async () => {
+
   const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+  const products = JSON.parse(localStorage.getItem("cartProductDetails") || "[]");
 
-  cartItems.forEach((item) => {
-    // const listItem = document.createElement("li");
-    listItem.textContent = item;
-    cartItemsList.append(listItem);
+  products.forEach(({ id, photoUrl, name, price }) => {
+    const cartItem = cartItems.find((item) => item.id === id);
+
+    if (!cartItem) return;
+
+    const listItem = document.createElement("li");
+    listItem.classList.add('modal__cart-item')
+    listItem.innerHTML = `
+      <img class="modal__cart-item-img" src="${API_URL}${photoUrl}" alt="${name}">
+
+      <h3 class="modal__cart-item-title">${name}</h3>
+
+      <div class="modal__cart-item-count">
+        <button class="modal__minus" data-id="${id}">-</button>
+        <span class="modal__count">${cartItem.count}</span>
+        <button class="modal__plus" data-id="${id}">+</button>
+      </div>
+
+      <p class="modal__cart-item-price">${price * cartItem.count}&nbsp;₽</p>
+    `
+
+    cartItemsList.append(listItem)
   });
-
 }

@@ -15,6 +15,8 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   overflow-x: hidden;
   position: relative;
   overflow-x: hidden;
@@ -31,6 +33,10 @@ body {
   line-height: $line-height;
   color: $green;
   background-color: $light;
+}
+
+.main {
+  flex-grow: 1;
 }
 
 img,
@@ -99,8 +105,7 @@ iframe {
 }
 
 .modal-overlay {
-  display: flex;
-  // display: none;
+  display: none;
   position: fixed;
   overflow-y: auto;
   inset: 0;

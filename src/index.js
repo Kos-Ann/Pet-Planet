@@ -3,6 +3,7 @@ import { addToCart } from "./js/addToCart.js";
 import { fetchProductsByCategory } from "./js/fetchProductsByCategory.js";
 import { updateCartCount } from "./js/udateCartCount.js";
 import { renderCartItems } from "./js/renderCartItems.js";
+import { fetchCartItems } from "./js/fetchCartItems.js";
 
 export const API_URL = "https://almond-flat-rainstorm.glitch.me";
 // /api/products/category
@@ -23,8 +24,22 @@ buttons.forEach((button) => {
   }
 });
 
-cartBtn.addEventListener('click', () => {
+cartBtn.addEventListener('click', async () => {
+  cartItemsList.textContent = "";
   modalOverlay.style.display = "flex";
+
+  const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+  const ids = cartItems.map(item => item.id)
+
+  if (!ids.length) {
+    const listItem = document.createElement('li');
+    listItem.textContent = 'Корзина пуста';
+    cartItemsList.append(listItem);
+    return;
+  }
+
+  const products = await fetchCartItems(ids);
+  localStorage.setItem('cartProductDetails', JSON.stringify(products));
   renderCartItems();
 })
 
@@ -36,9 +51,7 @@ modalOverlay.addEventListener('click', ({ target }) => {
 
 productList.addEventListener("click", ({ target }) => {
   if (target.closest('.product__btn-add-cart')) {
-    const productCard = target.closest('.store__product');
-    const productName = productCard.querySelector('.product__title').textContent;
-
-    addToCart(productName);
+    const productId = target.dataset.id;
+    addToCart(productId);
   }
 })

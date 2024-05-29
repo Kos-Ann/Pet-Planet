@@ -1,7 +1,7 @@
 import { buttons } from "../index.js";
 import { fetchProductsByCategory } from "./fetchProductsByCategory.js";
 
-export const changeCategory = ({ target }) => {
+export function changeCategory({ target }) {
   const category = target.textContent;
 
   buttons.forEach((button) => {

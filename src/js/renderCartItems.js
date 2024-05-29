@@ -1,6 +1,8 @@
-import { API_URL, cartItemsList } from "../index.js"
+import { API_URL, cartItemsList, cartTotalPriceEl } from "../index.js"
+import { calculateTotalPrice } from "./calculateTotalPrice.js";
 
 export const renderCartItems = async () => {
+  cartItemsList.textContent = "";
 
   const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
   const products = JSON.parse(localStorage.getItem("cartProductDetails") || "[]");
@@ -26,6 +28,9 @@ export const renderCartItems = async () => {
       <p class="modal__cart-item-price">${price * cartItem.count}&nbsp;₽</p>
     `
 
-    cartItemsList.append(listItem)
+    cartItemsList.append(listItem);
+
+    const totalPrice = calculateTotalPrice(cartItems, products);
+    cartTotalPriceEl.innerHTML = `${totalPrice}&nbsp;₽`;
   });
 }

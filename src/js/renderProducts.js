@@ -1,8 +1,9 @@
 import { createProductCard } from "./createProductCard.js";
 
-const productsList = document.querySelector('.store__list');
 
 export const renderProducts = (products) => {
+  const productsList = document.querySelector('.store__list');
+
   productsList.textContent = "";
 
   products.forEach((product) => {

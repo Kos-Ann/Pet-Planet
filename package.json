@@ -9,12 +9,6 @@
     "preview": "vite preview --open"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.0.2",
-    "@eslint/js": "^9.1.1",
-    "eslint": "^8.57.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-rallycoding": "^1.2.0",
-    "eslint-plugin-import": "^2.29.1",
     "globals": "^15.0.0",
     "sass": "^1.75.0",
     "sharp": "^0.33.3",
